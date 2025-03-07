@@ -13,17 +13,17 @@ Route::get('/posts', function () {
     ]);
 });
 
-//ini untuk detail post
-Route::get('/posts/{slug}', function ($slug) {
+//ini untuk detail post, dia filter berdasarkan slug yang ada di tiap post
+Route::get('/posts/{post:slug}', function (Post $post) {
     // dd($id);
-    $post = Post::find($slug);
+    // $post = Post::find($id);
     //wkwkwk ini untuk laravel 11, i pake laravel 12 sekarang
     // $post = Arr::first($posts, function($post) use ($id){
     //     return $post['id'] == $id;
     //     //kalo sama dengan ada 3 nanti bandingkan 2 tipe data yang beda
     // });
 
-    return view('post', ['title' => 'Single Post', 'post' => $post]);
+    return view('post', ['title' => 'Blog Detail', 'post' => $post]);
     // return view('contact', ['title' => 'Contact Page']);
 });
 
